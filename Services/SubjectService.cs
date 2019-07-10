@@ -7,6 +7,9 @@ using Model;
 using Repository;
 using Repository.Interfaces;
 using DataAccessLayer;
+using Model.ViewModel;
+using Services.Interfaces;
+
 namespace Services
 {
     public class SubjectService : Interfaces.ISubjectService<Subject>
@@ -29,7 +32,7 @@ namespace Services
             }
         }
 
-        public IEnumerable<Subject> GetAll()
+        public IEnumerable<ViewSubject> GetAll()
         {
             return subject.GetAll();
         }
@@ -53,5 +56,7 @@ namespace Services
         {
             return subject.Update(t);
         }
+
+       
     }
 }

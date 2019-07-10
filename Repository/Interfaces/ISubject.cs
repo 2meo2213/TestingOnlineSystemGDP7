@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Model;
+using Model.ViewModel;
 namespace Repository.Interfaces
 {
    public interface ISubject<T>
     {
-        IEnumerable<T> GetAll();
+        IEnumerable<ViewSubject> GetAll();
        
         IEnumerable<T> Search(string searchString);
         int Insert(T t);

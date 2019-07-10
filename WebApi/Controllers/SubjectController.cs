@@ -69,7 +69,7 @@ ReferenceLoopHandling=ReferenceLoopHandling.Ignore
             if (value != null)
             {
                 var subject = JsonConvert.DeserializeObject<Subject>(value.ToString());
-                subject.CreatdeDate = DateTime.Now;
+                subject.CreatedDate = DateTime.Now;
                 var result = service.Insert(subject);
                 return JsonConvert.SerializeObject(result);
             }
@@ -84,7 +84,7 @@ ReferenceLoopHandling=ReferenceLoopHandling.Ignore
             {
                 var subject = JsonConvert.DeserializeObject<Subject>(value.ToString());
                 subject.SubjectID = id;
-                subject.CreatdeDate = DateTime.Now;
+                subject.CreatedDate = DateTime.Now;
                 var result = service.Update(subject);
                 return JsonConvert.SerializeObject(result);
             }

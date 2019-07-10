@@ -14,10 +14,10 @@ namespace Model
         public string SubjectName { get; set; }
 
         public int Status { get; set; }
-        public DateTime? CreatdeDate { get; set; }
+        public DateTime? CreatedDate { get; set; }
 
       
-
+        public virtual Exam Exam { get; set; }
         public virtual ICollection<Question> Questions { get; set; }
         public virtual ICollection<Lesson> Lessons { get; set; }
 

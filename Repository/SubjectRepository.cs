@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Model;
 using DataAccessLayer;
 using Model.ViewModel;
+using Repository.Interfaces;
 
 namespace Repository
 {
@@ -57,18 +58,44 @@ namespace Repository
             GC.SuppressFinalize(this);
         }
 
-        public IEnumerable<Subject> GetAll()
+        public IEnumerable<ViewSubject> GetAll()
         {
-            
-               
+            var result = from s in context.Subjects
+                         join e in context.Exams
+                         on s.Exam.Id equals e.Id
+                         select new
+                         {
+                             s.SubjectID,
+                             s.SubjectName,
+                            s.Status,
+                            s.CreatedDate,
+                             e.NameExam
+                         };
+            List<ViewSubject> list = new List<ViewSubject>();
+            foreach(var item in result)
+            {
+                ViewSubject viewSubject = new ViewSubject();
+                viewSubject.SubjectID = item.SubjectID;
+                viewSubject.SubjectName = item.SubjectName;
+                viewSubject.CreatedDate = item.CreatedDate;
+                viewSubject.Status = item.Status;
 
-            return context.Subjects.ToList();
+                
+
+                viewSubject.NameExam = item.NameExam;
+                list.Add(viewSubject);
+            }
+
+
+
+
+            return list ;
             
         }
 
         public Subject GetById(int id)
         {
-            return context.Subjects.SingleOrDefault();
+            return context.Subjects.FirstOrDefault();
         }
 
         public int Insert(Subject t)

@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Model.ViewModel;
 namespace Services.Interfaces
 {
    public interface ISubjectService<T> where T : class
 
     {
-        IEnumerable<T> GetAll();
+        IEnumerable<ViewSubject> GetAll();
 
         IEnumerable<T> Search(string searchString);
         int Insert(T t);
